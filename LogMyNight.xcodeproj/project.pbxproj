@@ -16,6 +16,9 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
 		6F72FA1B11720FCC00461353 /* DrinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F72FA1A11720FCC00461353 /* DrinkProvider.m */; };
+		6F72FAA2117225FE00461353 /* LogMyNight.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 6F72FAA1117225FE00461353 /* LogMyNight.xcdatamodel */; };
+		6F72FAA7117227A700461353 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F72FAA6117227A700461353 /* Drink.m */; };
+		6F72FAE41172312400461353 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F72FAE31172312400461353 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6F72FA1911720FCC00461353 /* DrinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkProvider.h; sourceTree = "<group>"; };
 		6F72FA1A11720FCC00461353 /* DrinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkProvider.m; sourceTree = "<group>"; };
+		6F72FAA1117225FE00461353 /* LogMyNight.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = LogMyNight.xcdatamodel; sourceTree = "<group>"; };
+		6F72FAA5117227A700461353 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
+		6F72FAA6117227A700461353 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
+		6F72FAE31172312400461353 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* LogMyNight-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LogMyNight-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +51,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				6F72FAE41172312400461353 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +61,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6F72FAA91172280B00461353 /* model */,
+				6F72FAA1117225FE00461353 /* LogMyNight.xcdatamodel */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* LogMyNightAppDelegate.h */,
@@ -108,8 +118,18 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				6F72FAE31172312400461353 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F72FAA91172280B00461353 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F72FAA5117227A700461353 /* Drink.h */,
+				6F72FAA6117227A700461353 /* Drink.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +197,8 @@
 				1D3623260D0F684500981E51 /* LogMyNightAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				6F72FA1B11720FCC00461353 /* DrinkProvider.m in Sources */,
+				6F72FAA2117225FE00461353 /* LogMyNight.xcdatamodel in Sources */,
+				6F72FAA7117227A700461353 /* Drink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
