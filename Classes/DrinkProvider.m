@@ -10,9 +10,14 @@
 
 
 @implementation DrinkProvider
+
 @synthesize drinks;
--(NSString*) getDrink:(NSInteger) index{
-	return (NSString*)[drinks objectAtIndex:index];
+@synthesize fetchedResultsController;
+
+-(Drink*) getDrink:(NSInteger) index{
+	//return (NSString*)[drinks objectAtIndex:index];
+	
+	return (Drink*)[fetchedResultsController.fetchedObjects objectAtIndex:index];
 }
 
 -(id) init{
@@ -20,12 +25,47 @@
 		return nil;
 	
 	drinks = [[NSArray alloc] initWithObjects:@"Bier", @"Wein", @"Cocktail", nil];
+	[drinks release];
+	
 	[self initCoreData];
-	[self addObjects];
+//	[self addObjects];
+	[self fetchDrinks]; 
 	
 	return self;
 }
 
+- (void) fetchDrinks {
+	// Create a basic fetch request 
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init]; 
+	[fetchRequest setEntity:[NSEntityDescription
+							 entityForName:@"Drink" inManagedObjectContext:context]];
+	
+	// Add a sort descriptor. Mandatory. 
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+										initWithKey:@"name" ascending:YES selector:nil]; 
+	NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor]; 
+	[fetchRequest setSortDescriptors:descriptors]; 
+	[sortDescriptor release];
+	
+	// Init the fetched results controller 
+	NSError *error; 
+	
+	//NSLog(@"fetchedResultsController retainCount %d", [fetchedResultsController retainCount]);
+	
+	self.fetchedResultsController = [[NSFetchedResultsController alloc]
+									 initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Root"];
+	if (![fetchedResultsController performFetch:&error]) 
+		NSLog(@"Error %@", [error localizedDescription]);
+	
+	NSLog(@"fetchedResultsController1 retainCount %d", [self.fetchedResultsController retainCount]);
+	
+	[self.fetchedResultsController release]; 
+	
+	NSLog(@"fetchedResultsController2 retainCount %d", [self.fetchedResultsController retainCount]);
+	
+	[fetchRequest release];
+}
+	
 - (void) initCoreData {
 	NSError *error;
 	// Path to sqlite file. 
@@ -71,14 +111,13 @@
 }
 
 -(void)dealloc{
-
+	[fetchedResultsController release];
 	[drinks release];
 	[super dealloc];	
 }
 
 -(NSUInteger)size{
-
-	return [drinks count];
+	return [fetchedResultsController.fetchedObjects count];
 }
 
 @end

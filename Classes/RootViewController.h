@@ -7,9 +7,12 @@
 //
 
 #import "DrinkProvider.h"
+#import "Drink.h"
+#import "DetailViewController.h"
 
 @interface RootViewController : UITableViewController {
 	DrinkProvider *provider;
 }
 
+@property(nonatomic, retain) DrinkProvider *provider;
 @end

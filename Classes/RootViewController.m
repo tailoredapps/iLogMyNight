@@ -11,6 +11,7 @@
 
 @implementation RootViewController
 
+@synthesize provider;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -19,6 +20,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
  
  	provider = [[DrinkProvider alloc] init];
+	//[provider release];
 }
 
 
@@ -92,26 +94,42 @@
     
 	NSLog(@"Drink: %@ index %d" , [provider getDrink:[indexPath row]], [indexPath row]);
 	
-	[[cell textLabel] setText:[provider getDrink:[indexPath row]]]; 
+	Drink *drink = [provider getDrink:[indexPath row]];
+	[[cell textLabel] setText:drink.name]; 
 	
 	// Configure the cell.
 
     return cell;
 }
 
+- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
+	
+	//return UITableViewCellAccessoryDetailDisclosureButton;
+	return UITableViewCellAccessoryDisclosureIndicator;
+}
 
-
-/*
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
-}
-*/
+	// Navigation logic may go here -- for example, create and push another view controller.
+	
+	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
+		[detailView.name setText:@"testolta"];
+	
+	self.navigationItem.title = @"Back";
 
+	[self.navigationController pushViewController:detailView animated:YES];
+
+
+//	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+
+	//[self.navigationController pushViewController:detailView animated:YES];
+
+	[detailView release];
+
+
+
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -154,6 +172,7 @@
 
 
 - (void)dealloc {
+	[provider release];
     [super dealloc];
 }
 

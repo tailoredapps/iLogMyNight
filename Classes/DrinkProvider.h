@@ -13,14 +13,17 @@
 @interface DrinkProvider : NSObject {
 	NSArray *drinks;
 	NSManagedObjectContext *context;
+	NSFetchedResultsController *fetchedResultsController;
 }
 
--(NSString*) getDrink:(NSInteger) index;
+-(Drink*) getDrink:(NSInteger) index;
 -(NSUInteger) size;
 -(id) init;
 -(void) dealloc;
 - (void) initCoreData;
+- (void) fetchDrinks;
 
 @property (nonatomic, retain) NSArray *drinks;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end
