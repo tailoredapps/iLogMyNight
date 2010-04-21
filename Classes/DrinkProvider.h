@@ -8,22 +8,22 @@
 
 #import <CoreData/CoreData.h>
 #import "Drink.h"
+#import "DBConnectionManager.h"
 
 
 @interface DrinkProvider : NSObject {
-	NSArray *drinks;
+	NSMutableArray *drinks;
 	NSManagedObjectContext *context;
 	NSFetchedResultsController *fetchedResultsController;
 }
 
--(Drink*) getDrink:(NSInteger) index;
+-(Drink*) drinkAtIndex:(NSInteger) index;
 -(NSUInteger) size;
 -(id) init;
 -(void) dealloc;
-- (void) initCoreData;
 - (void) fetchDrinks;
 
-@property (nonatomic, retain) NSArray *drinks;
+@property (nonatomic, retain) NSMutableArray *drinks;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end

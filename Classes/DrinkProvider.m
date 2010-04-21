@@ -14,110 +14,87 @@
 @synthesize drinks;
 @synthesize fetchedResultsController;
 
--(Drink*) getDrink:(NSInteger) index{
-	//return (NSString*)[drinks objectAtIndex:index];
-	
-	return (Drink*)[fetchedResultsController.fetchedObjects objectAtIndex:index];
+-(Drink*) drinkAtIndex:(NSInteger) index{
+	return [drinks objectAtIndex:index];
 }
 
+/*Fetch the Drinks and store them in the NSMutableArray drinks*/
 -(id) init{
 	if((self = [super init]) == nil)
 		return nil;
 	
-	drinks = [[NSArray alloc] initWithObjects:@"Bier", @"Wein", @"Cocktail", nil];
-	[drinks release];
+	self.drinks = [[NSMutableArray alloc] init];
+
 	
-	[self initCoreData];
-//	[self addObjects];
-	[self fetchDrinks]; 
+	sqlite3 *db = [DBConnectionManager sharedConnection];
+	sqlite3_stmt *statement = nil;
+	const char *sql = "select * from Drink";
+	if(sqlite3_prepare_v2(db, sql, -1, &statement, NULL)!=SQLITE_OK)
+		NSAssert1(0,@"Error preparing statement",sqlite3_errmsg(db));
+	else {
+
+			while(sqlite3_step(statement) == SQLITE_ROW)
+			{
+				Drink* toAdd = [[Drink alloc] init];
+				[toAdd setName:[NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,0)]];
+				[drinks addObject:toAdd];
+			}
+
+//		if([drinks count] < 1) {
+//			NSArray *drinknames = [[NSArray alloc] initWithObjects:@"Bier",@"Wein",@"Cocktail",nil];
+//			statement = nil;
+//			const char *sql ="insert into Drink values(?,?,?)";
+//
+//			
+//			for (int i = 0; i < [drinknames count]; i++) {
+//				if(sqlite3_prepare_v2(db, sql, -1, &statement, NULL) != SQLITE_OK){
+//					printf( "could not prepare statemnt: %s", sqlite3_errmsg(db));
+//					NSAssert1(0, @"Error while creating add statement. '%s'", sqlite3_errmsg(db));
+//				}
+//				sqlite3_bind_text(statement, 1, [[drinknames objectAtIndex:i] UTF8String], -1, SQLITE_TRANSIENT);
+//				sqlite3_bind_double(statement, 2, 12.2f);
+//				sqlite3_bind_double(statement, 2, 12.4f);
+//				
+//				if(SQLITE_DONE != sqlite3_step(statement)){
+//					printf( "Error while inserting data: %s", sqlite3_errmsg(db));
+//					NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(db));
+//				}
+//			}
+//
+//		}
+
+	}
+	
+
+	
+	NSLog(@"drinks retainCount is: %d",[drinks retainCount]);
+	
 	
 	return self;
 }
 
 - (void) fetchDrinks {
-	// Create a basic fetch request 
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init]; 
-	[fetchRequest setEntity:[NSEntityDescription
-							 entityForName:@"Drink" inManagedObjectContext:context]];
-	
-	// Add a sort descriptor. Mandatory. 
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-										initWithKey:@"name" ascending:YES selector:nil]; 
-	NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor]; 
-	[fetchRequest setSortDescriptors:descriptors]; 
-	[sortDescriptor release];
-	
-	// Init the fetched results controller 
-	NSError *error; 
-	
-	//NSLog(@"fetchedResultsController retainCount %d", [fetchedResultsController retainCount]);
-	
-	self.fetchedResultsController = [[NSFetchedResultsController alloc]
-									 initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Root"];
-	if (![fetchedResultsController performFetch:&error]) 
-		NSLog(@"Error %@", [error localizedDescription]);
-	
-	NSLog(@"fetchedResultsController1 retainCount %d", [self.fetchedResultsController retainCount]);
-	
-	[self.fetchedResultsController release]; 
-	
-	NSLog(@"fetchedResultsController2 retainCount %d", [self.fetchedResultsController retainCount]);
-	
-	[fetchRequest release];
-}
-	
-- (void) initCoreData {
-	NSError *error;
-	// Path to sqlite file. 
-	NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/logMyNight.sqlite"]; 
-	NSURL *url = [NSURL fileURLWithPath:path];
-	
-	// Init the model 
-	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-	
-	// Establish the persistent store coordinator
-	NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
-	if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:&error])
-		NSLog(@"Error %@", [error localizedDescription]);
+	sqlite3 *db = [DBConnectionManager sharedConnection];
+	sqlite3_stmt *statement = nil;
+	const char *sql = "select * from Drink";
+	if(sqlite3_prepare_v2(db, sql, -1, &statement, NULL)!=SQLITE_OK)
+		NSAssert1(0,@"Error preparing statement",sqlite3_errmsg(db));
 	else {
-		// Create the context and assign the coordinator 
-		context = [[[NSManagedObjectContext alloc] init] autorelease]; 
-		[context setPersistentStoreCoordinator:persistentStoreCoordinator]; 
-		[persistentStoreCoordinator release];
+		while(sqlite3_step(statement) == SQLITE_ROW)
+			[drinks addObject:[NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,1)]];
 	}
-}
-
--(void) addObjects {
-	// Add a new department 
-	Drink *drink = (Drink *)[NSEntityDescription
-							insertNewObjectForEntityForName:@"Drink"
-							inManagedObjectContext:context]; 
-	drink.name = @"Bier";
-	
-	drink = (Drink *)[NSEntityDescription
-					   insertNewObjectForEntityForName:@"Drink"
-					   inManagedObjectContext:context]; 
-	drink.name = @"Cocktail";
-	
-	drink = (Drink *)[NSEntityDescription
-					   insertNewObjectForEntityForName:@"Drink"
-					   inManagedObjectContext:context]; 
-	drink.name = @"Wein";
-	
-	// Save out to the persistent store
-	NSError *error; 
-	if (![context save:&error])
-		NSLog(@"Error %@", [error localizedDescription]);
+	sqlite3_finalize(statement);
 }
 
 -(void)dealloc{
+	[context release];
 	[fetchedResultsController release];
 	[drinks release];
 	[super dealloc];	
 }
 
 -(NSUInteger)size{
-	return [fetchedResultsController.fetchedObjects count];
+	return [drinks count];
 }
 
 @end

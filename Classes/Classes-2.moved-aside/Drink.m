@@ -2,7 +2,7 @@
 //  Drink.m
 //  LogMyNight
 //
-//  Created by junterguggenberger on 15.04.10.
+//  Created by junterguggenberger on 14.04.10.
 //  Copyright 2010 ToolsOnAir. All rights reserved.
 //
 
@@ -11,6 +11,6 @@
 
 @implementation Drink 
 
-@synthesize name;
+@dynamic name;
 
 @end

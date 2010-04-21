@@ -9,10 +9,13 @@
 #import "DrinkProvider.h"
 #import "Drink.h"
 #import "DetailViewController.h"
+#import "AnalyseViewController.h"
 
 @interface RootViewController : UITableViewController {
 	DrinkProvider *provider;
 }
+
+-(IBAction)analyse:(id)sender;
 
 @property(nonatomic, retain) DrinkProvider *provider;
 @end

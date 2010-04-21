@@ -2,18 +2,15 @@
 //  Drink.h
 //  LogMyNight
 //
-//  Created by junterguggenberger on 15.04.10.
+//  Created by junterguggenberger on 14.04.10.
 //  Copyright 2010 ToolsOnAir. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
 
 
-@interface Drink :  NSObject  
+@interface Drink :  NSManagedObject  
 {
-	NSString * name;
-	Float32 preis;
-	Float32 letzterpreis;
 }
 
 @property (nonatomic, retain) NSString * name;

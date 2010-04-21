@@ -23,6 +23,14 @@
 	//[provider release];
 }
 
+-(IBAction)analyse:(id)sender{
+
+	AnalyseViewController *analyseView = [[AnalyseViewController alloc] initWithNibName:@"AnalyseViewController" bundle:[NSBundle mainBundle]];
+	self.navigationItem.title = @"Back";
+	[self.navigationController pushViewController:analyseView animated:YES];
+	[analyseView release];
+
+}
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,17 +95,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-//		cell.textLabel.text = @"Bier";
-		
-
     }
     
-	NSLog(@"Drink: %@ index %d" , [provider getDrink:[indexPath row]], [indexPath row]);
-	
-	Drink *drink = [provider getDrink:[indexPath row]];
-	[[cell textLabel] setText:drink.name]; 
-	
-	// Configure the cell.
+	NSLog(@"Drink: %@ index %d" , [provider drinkAtIndex:[indexPath row]], [indexPath row]);
+	Drink *drink = [provider drinkAtIndex:[indexPath row]];
+	[[cell textLabel] setText:[drink name]]; 
+	NSLog(@"Drink added to table");
 
     return cell;
 }
@@ -114,12 +117,15 @@
 	// Navigation logic may go here -- for example, create and push another view controller.
 	
 	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
-		[detailView.name setText:@"testolta"];
+	
+
+	
 	
 	self.navigationItem.title = @"Back";
 
 	[self.navigationController pushViewController:detailView animated:YES];
-
+	
+	[detailView.lbl_name setText:[[provider drinkAtIndex:[indexPath row]] name]];
 
 //	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
 
@@ -173,8 +179,58 @@
 
 - (void)dealloc {
 	[provider release];
+	[DBConnectionManager finalize];
     [super dealloc];
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//	if (section == 0 || section == 1) {
+//		CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+//		UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 44.0)];
+//		footerView.autoresizesSubviews = YES;
+//		footerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//		footerView.userInteractionEnabled = YES;
+//		
+//		footerView.hidden = NO;
+//		footerView.multipleTouchEnabled = NO;
+//		footerView.opaque = NO;
+//		footerView.contentMode = UIViewContentModeScaleToFill;
+//		
+//		// Add the label
+//		UILabel*    footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(150.0, -5.0, 120.0, 45.0)];
+//		footerLabel.backgroundColor = [UIColor clearColor];
+//		footerLabel.opaque = NO;
+//		footerLabel.text = @"Sharing";
+//		footerLabel.textColor = [UIColor redColor];
+//		footerLabel.highlightedTextColor = [UIColor greenColor];
+//		footerLabel.font = [UIFont boldSystemFontOfSize:17];
+//		footerLabel.shadowColor = [UIColor whiteColor];
+//		footerLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+//		[footerView addSubview: footerLabel];
+//		
+//		[footerLabel release];  
+//		
+//		// Add the switch
+//		UISwitch* footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(215.0, 5, 80.0, 45.0)];
+//		[footerView addSubview: footerSwitch];
+//		
+//		// Return the footerView
+//		return footerView;
+//	}
+//	else return nil;
+//}
+//// Need to call to pad the footer height otherwise the footer collapses
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//	switch (section) {
+//		case 0:
+//			return 60.0;
+//		case 1:
+//			return 60.0;
+//		default:
+//			return 0.0;
+//	}
+//}
+
 
 
 @end
