@@ -11,11 +11,18 @@
 #import "DetailViewController.h"
 #import "AnalyseViewController.h"
 
-@interface RootViewController : UITableViewController {
+
+@interface RootViewController : UIViewController {
 	DrinkProvider *provider;
+	UITableView *tableView;
+	UIImageView *imageView;
+	UITextField *txt_location;
 }
 
 -(IBAction)analyse:(id)sender;
 
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property(nonatomic, retain) DrinkProvider *provider;
+@property (nonatomic, retain) IBOutlet UITextField *txt_location;
 @end

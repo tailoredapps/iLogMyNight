@@ -12,14 +12,46 @@
 @implementation RootViewController
 
 @synthesize provider;
+@synthesize tableView;
+@synthesize imageView;
+@synthesize txt_location;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
- 
+	imageView.image = [UIImage imageNamed:@"gradientback.png"];
+
+	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	tableView.backgroundColor = [UIColor clearColor];
+
+	//
+    // Create a header view. Wrap it in a container to allow us to position
+    // it better.
+    //
+//    UIView *containerView =
+//	[[[UIView alloc]
+//	  initWithFrame:CGRectMake(0, 0, 300, 60)]
+//	 autorelease];
+//    UILabel *headerLabel =
+//	[[[UILabel alloc]
+//	  initWithFrame:CGRectMake(10, 20, 300, 40)]
+//	 autorelease];
+//    headerLabel.text = NSLocalizedString(@"LogMyNight - Title", @"");
+//    headerLabel.textColor = [UIColor whiteColor];
+//    headerLabel.shadowColor = [UIColor blackColor];
+//    headerLabel.shadowOffset = CGSizeMake(0, 1);
+//    headerLabel.font = [UIFont boldSystemFontOfSize:22];
+//    headerLabel.backgroundColor = [UIColor clearColor];
+//    [containerView addSubview:headerLabel];
+//    self.tableView.tableHeaderView = containerView;
+	
+//	tableView.rowHeight = 50;
+	
  	provider = [[DrinkProvider alloc] init];
+	
+	
 	//[provider release];
 }
 
@@ -29,7 +61,6 @@
 	self.navigationItem.title = @"Back";
 	[self.navigationController pushViewController:analyseView animated:YES];
 	[analyseView release];
-
 }
 
 /*
@@ -88,20 +119,50 @@
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)atableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [atableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
+
+
     }
-    
 	NSLog(@"Drink: %@ index %d" , [provider drinkAtIndex:[indexPath row]], [indexPath row]);
 	Drink *drink = [provider drinkAtIndex:[indexPath row]];
-	[[cell textLabel] setText:[drink name]]; 
+	
+	UIImage *indicatorImage = [UIImage imageNamed:@"indicator.png"];
+	cell.accessoryView = [[[UIImageView alloc] initWithImage:indicatorImage] autorelease];
+	cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_cell.png"]];
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_cellselected.png"]];
+	[[cell textLabel] setText:[drink name]];
+	[cell textLabel].textColor = [UIColor whiteColor];
 	NSLog(@"Drink added to table");
 
+	
+	if ([[drink type] isEqualToString:@"Bier"]) {
+		cell.imageView.image = [UIImage imageNamed:@"Icon_Bier.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Wein"]) {
+		cell.imageView.image = [UIImage imageNamed:@"Icon_Wein.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Cocktail"]) {
+		cell.imageView.image = [UIImage imageNamed:@"Icon_Cocktail.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Shot"]) {
+		cell.imageView.image = [UIImage imageNamed:@"Icon_Shot.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Anti"]) {
+		cell.imageView.image = [UIImage imageNamed:@"Icon_Anti.png"];
+	}
+	
+	
     return cell;
 }
 
@@ -117,25 +178,37 @@
 	// Navigation logic may go here -- for example, create and push another view controller.
 	
 	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
-	
-
-	
-	
 	self.navigationItem.title = @"Back";
-
 	[self.navigationController pushViewController:detailView animated:YES];
 	
-	[detailView.lbl_name setText:[[provider drinkAtIndex:[indexPath row]] name]];
-
-//	DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-
-	//[self.navigationController pushViewController:detailView animated:YES];
-
+	Drink *drink = [provider drinkAtIndex:[indexPath row]];
+	[detailView.lbl_name setText:[drink name]];
+	
+	
+	if ([[drink type] isEqualToString:@"Bier"]) {
+		detailView.img_pic.image = [UIImage imageNamed:@"Icon_Bier_big.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Wein"]) {
+		detailView.img_pic.image = [UIImage imageNamed:@"Icon_Wein_big.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Cocktail"]) {
+		detailView.img_pic.image = [UIImage imageNamed:@"Icon_Cocktail_big.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Shot"]) {
+		detailView.img_pic.image = [UIImage imageNamed:@"Icon_Shot_big.png"];
+	}
+	
+	if ([[drink type] isEqualToString:@"Anti"]) {
+		detailView.img_pic.image = [UIImage imageNamed:@"Icon_Anti_big.png"];
+	}
+	
 	[detailView release];
 
-
-
 }
+
 
 /*
 // Override to support conditional editing of the table view.

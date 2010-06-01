@@ -21,7 +21,6 @@
 -(NSUInteger) size;
 -(id) init;
 -(void) dealloc;
-- (void) fetchDrinks;
 
 @property (nonatomic, retain) NSMutableArray *drinks;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;

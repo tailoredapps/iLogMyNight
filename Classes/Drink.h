@@ -11,12 +11,14 @@
 
 @interface Drink :  NSObject  
 {
-	NSString * name;
+	NSString *name;
+	NSString *type;
 	Float32 preis;
 	Float32 letzterpreis;
 }
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * type;
 
 @end
 

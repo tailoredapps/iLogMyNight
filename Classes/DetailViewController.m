@@ -21,6 +21,9 @@
 @synthesize btn_up;
 @synthesize btn_down;
 @synthesize lbl_amount;
+@synthesize lbl_preis;
+@synthesize lbl_x;
+@synthesize img_pic;
 
 -(void)setName:(NSString *)as:value{
 	[self.lbl_name setText:value];
@@ -87,8 +90,16 @@
 //									action:@selector(handleBack:)];
 	
 	self.navigationItem.title = @"Replacement Title";
-	
 	self.provider = [[DrinkHistoryProvider alloc] init];
+	UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_cell.png"]];
+	[self.view addSubview:background];
+	[self.view sendSubviewToBack:background];
+	
+	//Set Color white
+	self.lbl_name.textColor = [UIColor whiteColor];
+	self.lbl_amount.textColor = [UIColor whiteColor];
+	self.lbl_preis.textColor = [UIColor whiteColor];
+	self.lbl_x.textColor = [UIColor whiteColor];
 	amount = 1;
 	
 

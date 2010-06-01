@@ -7,7 +7,6 @@
 //
 
 #import "LogMyNightAppDelegate.h"
-#import "RootViewController.h"
 
 
 @implementation LogMyNightAppDelegate
@@ -22,7 +21,6 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch    
-	
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 }

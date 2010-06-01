@@ -12,5 +12,6 @@
 @implementation Drink 
 
 @synthesize name;
+@synthesize type;
 
 @end

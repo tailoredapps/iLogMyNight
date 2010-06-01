@@ -43,7 +43,7 @@
 					<object class="IBUILabel" id="188944486">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{105, 128}, {105, 61}}</string>
+						<string key="NSFrame">{{105, 0}, {105, 61}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -131,7 +131,7 @@
 					<object class="IBUIImageView" id="576382664">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{105, 13}, {93, 117}}</string>
+						<string key="NSFrame">{{84, 51}, {128, 128}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -221,26 +221,33 @@
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">20</float>
 					</object>
-					<object class="IBUIToolbar" id="831855380">
+					<object class="IBUITabBar" id="294426190">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 416}, {320, 44}}</string>
+						<string key="NSFrame">{{0, 411}, {320, 49}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<bool key="IBUIOpaque">NO</bool>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<object class="NSMutableArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIBarButtonItem" id="55106795">
-								<string key="IBUITitle">Analyse</string>
-								<float key="IBUIWidth">148</float>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="831855380"/>
+							<object class="IBUITabBarItem" id="1073383518">
+								<reference key="IBUITabBar" ref="294426190"/>
+								<int key="IBUISystemItemIdentifier">1</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="746536398">
-								<string key="IBUITitle">Optionen</string>
-								<float key="IBUIWidth">148</float>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="831855380"/>
+							<object class="IBUITabBarItem" id="287771371">
+								<string key="IBUITitle">Item</string>
+								<reference key="IBUITabBar" ref="294426190"/>
+							</object>
+							<object class="IBUITabBarItem" id="939927616">
+								<string key="IBUITitle">Item</string>
+								<reference key="IBUITabBar" ref="294426190"/>
+							</object>
+							<object class="IBUITabBarItem" id="504642881">
+								<reference key="IBUITabBar" ref="294426190"/>
+								<int key="IBUISystemItemIdentifier">0</int>
 							</object>
 						</object>
 					</object>
@@ -358,6 +365,30 @@
 					</object>
 					<int key="connectionID">63</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lbl_preis</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="639209729"/>
+					</object>
+					<int key="connectionID">75</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lbl_x</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="550673591"/>
+					</object>
+					<int key="connectionID">76</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">img_pic</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="576382664"/>
+					</object>
+					<int key="connectionID">77</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -380,10 +411,10 @@
 							<reference ref="148111621"/>
 							<reference ref="878975736"/>
 							<reference ref="870316892"/>
+							<reference ref="798831863"/>
+							<reference ref="294426190"/>
 							<reference ref="188944486"/>
 							<reference ref="576382664"/>
-							<reference ref="831855380"/>
-							<reference ref="798831863"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -450,24 +481,38 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">67</int>
-						<reference key="object" ref="831855380"/>
+						<int key="objectID">70</int>
+						<reference key="object" ref="294426190"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="55106795"/>
-							<reference ref="746536398"/>
+							<reference ref="1073383518"/>
+							<reference ref="504642881"/>
+							<reference ref="287771371"/>
+							<reference ref="939927616"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">68</int>
-						<reference key="object" ref="55106795"/>
-						<reference key="parent" ref="831855380"/>
+						<int key="objectID">71</int>
+						<reference key="object" ref="1073383518"/>
+						<reference key="parent" ref="294426190"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">69</int>
-						<reference key="object" ref="746536398"/>
-						<reference key="parent" ref="831855380"/>
+						<int key="objectID">72</int>
+						<reference key="object" ref="504642881"/>
+						<reference key="parent" ref="294426190"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">73</int>
+						<reference key="object" ref="287771371"/>
+						<reference key="parent" ref="294426190"/>
+						<string key="objectName">Analyse</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">74</int>
+						<reference key="object" ref="939927616"/>
+						<reference key="parent" ref="294426190"/>
+						<string key="objectName">Start</string>
 					</object>
 				</object>
 			</object>
@@ -489,15 +534,19 @@
 					<string>53.IBPluginDependency</string>
 					<string>54.IBPluginDependency</string>
 					<string>55.IBPluginDependency</string>
-					<string>67.IBPluginDependency</string>
-					<string>68.IBPluginDependency</string>
-					<string>69.IBPluginDependency</string>
+					<string>70.IBPluginDependency</string>
+					<string>71.IBPluginDependency</string>
+					<string>72.IBPluginDependency</string>
+					<string>73.IBPluginDependency</string>
+					<string>74.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>DetailViewController</string>
 					<string>UIResponder</string>
 					<string>{{492, 260}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -530,7 +579,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">69</int>
+			<int key="maxID">77</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -564,8 +613,11 @@
 							<string>btn_down</string>
 							<string>btn_logit</string>
 							<string>btn_up</string>
+							<string>img_pic</string>
 							<string>lbl_amount</string>
 							<string>lbl_name</string>
+							<string>lbl_preis</string>
+							<string>lbl_x</string>
 							<string>slider</string>
 							<string>sliderval</string>
 							<string>txt_sliderval</string>
@@ -575,6 +627,9 @@
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
+							<string>UIImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UISlider</string>
@@ -710,14 +765,6 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">UIBarButtonItem</string>
-					<string key="superclassName">UIBarItem</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">UIKit.framework/Headers/UIBarButtonItem.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">UIBarItem</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -787,19 +834,27 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">UITabBar</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UITabBar.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UITabBarItem</string>
+					<string key="superclassName">UIBarItem</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UITabBarItem.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">UITextField</string>
 					<string key="superclassName">UIControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="984338298">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UITextField.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UIToolbar</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">UIKit.framework/Headers/UIToolbar.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

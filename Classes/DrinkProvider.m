@@ -37,6 +37,7 @@
 			{
 				Drink* toAdd = [[Drink alloc] init];
 				[toAdd setName:[NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,0)]];
+				[toAdd setType:[NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,1)]];
 				[drinks addObject:toAdd];
 			}
 
@@ -71,19 +72,6 @@
 	
 	
 	return self;
-}
-
-- (void) fetchDrinks {
-	sqlite3 *db = [DBConnectionManager sharedConnection];
-	sqlite3_stmt *statement = nil;
-	const char *sql = "select * from Drink";
-	if(sqlite3_prepare_v2(db, sql, -1, &statement, NULL)!=SQLITE_OK)
-		NSAssert1(0,@"Error preparing statement",sqlite3_errmsg(db));
-	else {
-		while(sqlite3_step(statement) == SQLITE_ROW)
-			[drinks addObject:[NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,1)]];
-	}
-	sqlite3_finalize(statement);
 }
 
 -(void)dealloc{
