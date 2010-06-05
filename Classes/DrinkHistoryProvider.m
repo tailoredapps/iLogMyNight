@@ -43,8 +43,7 @@
 	[counts release];
 	return self;
 }
-
--(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price{
+-(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price andAmount:(NSInteger)amount{
 	sqlite3 *db = [DBConnectionManager sharedConnection];
 	sqlite3_stmt *statement = nil;
 	
@@ -52,7 +51,7 @@
 	[df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
 	NSString* todaydate = [df stringFromDate:[NSDate date]];
 	[df release];
-	const char *sql ="insert into DrinkHistory values(NULL,(Select name from Drink where name=?), ?, ?)";
+	const char *sql ="insert into DrinkHistory values(NULL,(Select name from Drink where name=?), ?, ?, ?)";
 	if(sqlite3_prepare_v2(db, sql, -1, &statement, NULL) != SQLITE_OK){
 		printf( "could not prepare statemnt: %s", sqlite3_errmsg(db));
 		NSAssert1(0, @"Error while creating add statement. '%s'", sqlite3_errmsg(db));
@@ -60,7 +59,8 @@
 
 	sqlite3_bind_text(statement, 1, [[drink name] UTF8String], -1, SQLITE_TRANSIENT);
 	sqlite3_bind_double(statement, 2, price);
-	sqlite3_bind_text(statement, 3, [todaydate UTF8String] , -1, SQLITE_TRANSIENT);
+	sqlite3_bind_double(statement, 3, amount);
+	sqlite3_bind_text(statement, 4, [todaydate UTF8String] , -1, SQLITE_TRANSIENT);
 		
 	if(SQLITE_DONE != sqlite3_step(statement)){
 		printf( "Error while inserting data: %s", sqlite3_errmsg(db));
@@ -68,9 +68,6 @@
 	}
 	
 	statement = 0;
-
-		
-	
 	
 }
 	

@@ -22,7 +22,7 @@
 //for the logging
 -(id) init;
 -(void) dealloc;
--(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price;
+-(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price andAmount:(NSInteger)amount;
 
 //for the analyseview
 -(NSInteger) size;
