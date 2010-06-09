@@ -12,7 +12,7 @@
 #import "DBConnectionManager.h"
 
 @interface DrinkHistoryProvider : NSObject {
-	NSMutableArray *counts;
+	NSMutableArray *loadedentries;
 	NSManagedObjectContext *context;
 	NSFetchedResultsController *fetchedResultsController;
 
@@ -21,6 +21,8 @@
 
 //for the logging
 -(id) init;
+-(NSMutableArray*) loadEntriesAll;
+-(NSMutableArray*) loadEntriesBetween:(NSDate*)from to:(NSDate*)to;
 -(void) dealloc;
 -(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price andAmount:(NSInteger)amount;
 
@@ -28,7 +30,7 @@
 -(NSInteger) size;
 -(DrinkHistory*)itemAtIndex:(NSInteger)index;
 
-@property (nonatomic, retain) NSMutableArray *counts;
+@property (nonatomic, retain) NSMutableArray *loadedentries;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end

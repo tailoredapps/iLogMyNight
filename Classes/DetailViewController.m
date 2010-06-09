@@ -35,10 +35,10 @@
 	Drink* drink = [[Drink alloc] init];
 	drink.name = lbl_name.text;
 	
-	Float32 price = [txt_sliderval.text floatValue] * [lbl_amount.text intValue];
+	Float32 price = [txt_sliderval.text floatValue];
 	
 	//Log the Price and the drink in the database
-	[provider logDrinkHistory:drink andPrice:(Float32)price];
+	[provider logDrinkHistory:drink andPrice:price andAmount:amount];
 	
 	//Push the RootView again
 	RootViewController *rootView = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];

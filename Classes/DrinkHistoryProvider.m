@@ -10,14 +10,21 @@
 
 
 @implementation DrinkHistoryProvider
-@synthesize counts;
+@synthesize loadedentries;
 @synthesize fetchedResultsController;
 
 -(id) init{
 	if((self = [super init]) == nil)
 		return nil;
 	
-	self.counts = [[NSMutableArray alloc] init];
+	self.loadedentries = [[NSMutableArray alloc] init];
+	[loadedentries release];
+	return self;
+}
+
+-(NSMutableArray*) loadEntriesAll
+{
+	[self init];
 	sqlite3 *db = [DBConnectionManager sharedConnection];
 	sqlite3_stmt *statement = nil;
 	const char *sql2 = "select * from DrinkHistory";
@@ -30,22 +37,53 @@
 			DrinkHistory* item = [[DrinkHistory alloc] init];
 			item.drinkname = [NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,1)];
 			item.price = sqlite3_column_double(statement,2);
+			item.amount = sqlite3_column_double(statement,3);
 			
 			
 			NSDateFormatter *df = [[NSDateFormatter alloc] init];
 			[df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-			item.timestamp = [df dateFromString: [NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,3)]];
-			[counts addObject:item];
+			item.timestamp = [df dateFromString: [NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,4)]];
+			[loadedentries addObject:item];
 			[df release];
 			[item release];
 		}
 	}
-	[counts release];
-	return self;
+	
+	return loadedentries;
 }
+-(NSMutableArray*) loadEntriesBetween:(NSDate*)from to:(NSDate*)to
+{
+	return loadedentries;
+}
+
 -(void) logDrinkHistory:(Drink*)drink andPrice:(Float32)price andAmount:(NSInteger)amount{
 	sqlite3 *db = [DBConnectionManager sharedConnection];
 	sqlite3_stmt *statement = nil;
+	
+	
+	const char *sql2 = "select * from DrinkHistory";
+	if(sqlite3_prepare_v2(db, sql2, -1, &statement, NULL)!=SQLITE_OK)
+		NSAssert1(0,@"Error preparing statement",sqlite3_errmsg(db));
+	else {
+		
+		while(sqlite3_step(statement) == SQLITE_ROW)
+		{
+			DrinkHistory* item = [[DrinkHistory alloc] init];
+			item.drinkname = [NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,1)];
+			item.price = sqlite3_column_double(statement,2);
+			item.amount = sqlite3_column_double(statement,3);
+			
+			
+			NSDateFormatter *df = [[NSDateFormatter alloc] init];
+			[df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+			item.timestamp = [df dateFromString: [NSString stringWithFormat:@"%s",(char*)sqlite3_column_text(statement,4)]];
+			[loadedentries addObject:item];
+			[df release];
+			[item release];
+		}
+	}
+	
+	
 	
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	[df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
@@ -74,15 +112,15 @@
 -(void)dealloc{
 	[context release];
 	[fetchedResultsController release];
-	[counts release];
+	[loadedentries release];
 	[super dealloc];	
 }
 
 -(NSInteger) size{
-	return [counts count];
+	return [loadedentries count];
 }
 -(DrinkHistory*)itemAtIndex:(NSInteger)index{
-	return [counts objectAtIndex:index];
+	return [loadedentries objectAtIndex:index];
 }
 
 

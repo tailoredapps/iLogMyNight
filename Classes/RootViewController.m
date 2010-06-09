@@ -15,6 +15,8 @@
 @synthesize tableView;
 @synthesize imageView;
 @synthesize txt_location;
+@synthesize tb_navbar;
+@synthesize tbi_analyse;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +28,14 @@
 	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	tableView.backgroundColor = [UIColor clearColor];
 
+	
+	UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_cell.png"]];
+	[tb_navbar addSubview:background];
+	[tb_navbar sendSubviewToBack:background];
+	
+	tbi_analyse.image = [UIImage imageNamed:@"Icon_Wein.png"];
+	
+	
 	//
     // Create a header view. Wrap it in a container to allow us to position
     // it better.
@@ -56,11 +66,42 @@
 }
 
 -(IBAction)analyse:(id)sender{
-
-	AnalyseViewController *analyseView = [[AnalyseViewController alloc] initWithNibName:@"AnalyseViewController" bundle:[NSBundle mainBundle]];
+//
+//	AnalyseViewController *analyseView = [[AnalyseViewController alloc] initWithNibName:@"AnalyseViewController" bundle:[NSBundle mainBundle]];
+//	self.navigationItem.title = @"Back";
+//	[self.navigationController pushViewController:analyseView animated:YES];
+//	[analyseView release];
+	
+	DrinkHistoryProvider* hprovider = [[DrinkHistoryProvider alloc] init];
+	
+	NSMutableArray *diagramdata = [hprovider loadEntriesAll];	
+	
+	
+	
+	
+	
+	
+	DiagramViewController *diagramView = [[DiagramViewController alloc] initWithNibName:@"DiagramView" bundle:[NSBundle mainBundle]];
 	self.navigationItem.title = @"Back";
-	[self.navigationController pushViewController:analyseView animated:YES];
-	[analyseView release];
+	NSInteger maxVal = 0;
+	diagramView.dataentries = [[NSMutableArray alloc] init];
+	for(int i=0; i < [diagramdata count]; i++)
+	{
+		DrinkHistory *item = [diagramdata objectAtIndex:i];
+		ABDiagramData *entry = [[ABDiagramData alloc] initWithData:item.drinkname:item.amount];
+
+		[diagramView.dataentries addObject:entry];
+		if(entry.amount > maxVal)
+			maxVal = entry.amount;
+		
+		[entry release];
+	}
+	diagramView.maxValue = maxVal;
+	[diagramdata release];
+	
+	[self.navigationController pushViewController:diagramView animated:YES];
+	[diagramView release];
+	
 }
 
 /*

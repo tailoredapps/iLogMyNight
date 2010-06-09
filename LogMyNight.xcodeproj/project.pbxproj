@@ -15,6 +15,11 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		6571683F11BE906D00B4ACCD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6571683411BE904500B4ACCD /* libCorePlot-CocoaTouch.a */; };
+		6571684A11BE90DD00B4ACCD /* DiagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6571684911BE90DD00B4ACCD /* DiagramViewController.m */; };
+		6571684E11BE910700B4ACCD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6571684D11BE910700B4ACCD /* QuartzCore.framework */; };
+		6571685811BE932100B4ACCD /* ABDiagramData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6571685711BE932100B4ACCD /* ABDiagramData.m */; };
+		657168E011BEA20F00B4ACCD /* DiagramView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657168DF11BEA20F00B4ACCD /* DiagramView.xib */; };
 		6F0AA4E71177047E009289D9 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0AA4E61177047E009289D9 /* Drink.m */; };
 		6F39F48611A9744C00E8D880 /* background_blackgradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F39F48511A9744C00E8D880 /* background_blackgradient.png */; };
 		6F39F4F011A9E6E100E8D880 /* Icon_Bier.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F39F4EF11A9E6E100E8D880 /* Icon_Bier.png */; };
@@ -48,6 +53,23 @@
 		6FED5E7A11A932D60033B3A2 /* Hintergrund_Balken.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6FED5E7911A932D60033B3A2 /* Hintergrund_Balken.svg */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6571683311BE904500B4ACCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6571682E11BE904500B4ACCD /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		6571683D11BE905900B4ACCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6571682E11BE904500B4ACCD /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* LogMyNightAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogMyNightAppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +83,13 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6571682E11BE904500B4ACCD /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Frameworks/core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		6571684811BE90DD00B4ACCD /* DiagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramViewController.h; sourceTree = "<group>"; };
+		6571684911BE90DD00B4ACCD /* DiagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramViewController.m; sourceTree = "<group>"; };
+		6571684D11BE910700B4ACCD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6571685611BE932100B4ACCD /* ABDiagramData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDiagramData.h; sourceTree = "<group>"; };
+		6571685711BE932100B4ACCD /* ABDiagramData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDiagramData.m; sourceTree = "<group>"; };
+		657168DF11BEA20F00B4ACCD /* DiagramView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiagramView.xib; sourceTree = "<group>"; };
 		6F0AA4E51177047E009289D9 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
 		6F0AA4E61177047E009289D9 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
 		6F39F48511A9744C00E8D880 /* background_blackgradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_blackgradient.png; path = Classes/background_blackgradient.png; sourceTree = "<group>"; };
@@ -85,7 +114,7 @@
 		6F58FC12117A1A74005BE6DB /* DrinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkProvider.h; sourceTree = "<group>"; };
 		6F58FC13117A1A74005BE6DB /* DrinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkProvider.m; sourceTree = "<group>"; };
 		6F58FC15117A1A7F005BE6DB /* DrinkHistoryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkHistoryProvider.h; sourceTree = "<group>"; };
-		6F58FC16117A1A7F005BE6DB /* DrinkHistoryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkHistoryProvider.m; sourceTree = "<group>"; };
+		6F58FC16117A1A7F005BE6DB /* DrinkHistoryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkHistoryProvider.m; sourceTree = "<group>"; wrapsLines = 0; };
 		6F58FC22117A3DC7005BE6DB /* DBConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnectionManager.h; sourceTree = "<group>"; };
 		6F58FC23117A3DC7005BE6DB /* DBConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBConnectionManager.m; sourceTree = "<group>"; };
 		6F72FAE31172312400461353 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -107,11 +136,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6571683F11BE906D00B4ACCD /* libCorePlot-CocoaTouch.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				6F72FAE41172312400461353 /* CoreData.framework in Frameworks */,
 				6F58FC0E117A17A7005BE6DB /* libsqlite3.0.dylib in Frameworks */,
+				6571684E11BE910700B4ACCD /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,13 +172,14 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				6FCF9B6811A2FB980004CB54 /* images */,
 				6F58FC0D117A17A7005BE6DB /* libsqlite3.0.dylib */,
+				6571682E11BE904500B4ACCD /* CorePlot-CocoaTouch.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				6571684D11BE910700B4ACCD /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -171,6 +203,7 @@
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* LogMyNight-Info.plist */,
 				6F8F64FB117E04140034DD07 /* AnalyseViewController.xib */,
+				657168DF11BEA20F00B4ACCD /* DiagramView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -184,6 +217,14 @@
 				6F72FAE31172312400461353 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6571682F11BE904500B4ACCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6571683411BE904500B4ACCD /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		6F58FBD611787FA3005BE6DB /* dataprovider */ = {
@@ -208,6 +249,8 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				6F3D0B771174DF27005FE172 /* DetailViewController.h */,
 				6F3D0B781174DF27005FE172 /* DetailViewController.m */,
+				6571684811BE90DD00B4ACCD /* DiagramViewController.h */,
+				6571684911BE90DD00B4ACCD /* DiagramViewController.m */,
 			);
 			name = viewControler;
 			sourceTree = "<group>";
@@ -215,19 +258,14 @@
 		6F72FAA91172280B00461353 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				6571685611BE932100B4ACCD /* ABDiagramData.h */,
+				6571685711BE932100B4ACCD /* ABDiagramData.m */,
 				6F0AA4E51177047E009289D9 /* Drink.h */,
 				6F0AA4E61177047E009289D9 /* Drink.m */,
 				6F779364117788F000113244 /* DrinkHistory.h */,
 				6F779365117788F000113244 /* DrinkHistory.m */,
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		6FCF9B6811A2FB980004CB54 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		6FED5D6011A69B0F0033B3A2 /* images */ = {
@@ -270,6 +308,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6571683E11BE905900B4ACCD /* PBXTargetDependency */,
 			);
 			name = LogMyNight;
 			productName = LogMyNight;
@@ -293,12 +332,28 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6571682F11BE904500B4ACCD /* Products */;
+					ProjectRef = 6571682E11BE904500B4ACCD /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* LogMyNight */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6571683411BE904500B4ACCD /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 6571683311BE904500B4ACCD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -329,6 +384,7 @@
 				6F39F58411AAADD200E8D880 /* Icon_Wein.png in Resources */,
 				6F39F5AA11AAB44600E8D880 /* LogMyNightDB.sqlite in Resources */,
 				6F39F63011AACF1600E8D880 /* gradient_cellselected.png in Resources */,
+				657168E011BEA20F00B4ACCD /* DiagramView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,10 +405,20 @@
 				6F58FC17117A1A7F005BE6DB /* DrinkHistoryProvider.m in Sources */,
 				6F58FC24117A3DC7005BE6DB /* DBConnectionManager.m in Sources */,
 				6F8F64FC117E04140034DD07 /* AnalyseViewController.m in Sources */,
+				6571684A11BE90DD00B4ACCD /* DiagramViewController.m in Sources */,
+				6571685811BE932100B4ACCD /* ABDiagramData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6571683E11BE905900B4ACCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 6571683D11BE905900B4ACCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -364,7 +430,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogMyNight_Prefix.pch;
+				HEADER_SEARCH_PATHS = "../Frameworks/core-plot/framework/**";
 				INFOPLIST_FILE = "LogMyNight-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = LogMyNight;
 			};
 			name = Debug;

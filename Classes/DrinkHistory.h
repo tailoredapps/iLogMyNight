@@ -12,6 +12,7 @@
 @interface DrinkHistory :  NSObject  
 {
 	double price;
+	int amount;
 	NSDate * timestamp;
 	NSString* drinkname;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSString* drinkname;
 @property (assign) double price;
+@property (assign) int amount;
 
 @end
 

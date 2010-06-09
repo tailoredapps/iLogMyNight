@@ -14,5 +14,5 @@
 @synthesize timestamp;
 @synthesize drinkname;
 @synthesize price;
-
+@synthesize amount;
 @end
